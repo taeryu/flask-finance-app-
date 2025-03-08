@@ -15,7 +15,10 @@ BASE_URL = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json"
 API_KEY = "d0c1aca809d67415a6a14e027f2c320b898b94fb"
 
 # 📌 기업 코드 목록이 들어 있는 엑셀 파일 경로
-EXCEL_PATH = "/Users/youngjunlee/Desktop/무제 폴더/기업별 고유번호_230819.xlsx"
+EXCEL_PATH = os.path.join(os.getcwd(), "corporate_code.xlsx")
+
+if not os.path.exists(EXCEL_PATH):
+    raise FileNotFoundError(f"❌ 엑셀 파일을 찾을 수 없습니다: {EXCEL_PATH}")
 
 # 📌 엑셀에서 기업 코드 불러오기
 df = pd.read_excel(EXCEL_PATH, dtype=str)
